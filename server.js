@@ -4,8 +4,9 @@ var bodyparser = require('body-parser');
 var app = express();
 
 app.use(bodyparser.json());
+var mongodbURL = "mongodb://heroku:LVZvO4MpsCjB90A3sa-wEN_FsRMYN-hxm1CdcMx0nSv7EwWqCmHSq_HRIgzc_UJj87u-jLv5LGBGEc8hhw0I4Q@dogen.mongohq.com:10041/app31416299";
+mongoose.connect(process.env.MONGO_URL || mongodbURL);
 
-mongoose.connect(process.env.MONGO_URI || process.env.MONGO_URL || 'mongodb://localhost/notes_development');
 
 require('./routes/notes_routes')(app);
 
