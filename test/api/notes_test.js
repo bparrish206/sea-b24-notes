@@ -62,4 +62,26 @@ describe('basic notes crud', function() {
       done();
     });
   });
+
+it('note must be lowercase', function(done) {
+  chai.request('http://localhost:3000')
+  .post('/api/notes')
+  .send({noteBody: 'Hello World'})
+  .end(function(err, res) {
+    expect(res.statusCode).to.eql(500);
+    done();
+  });
+});
+
+it('Do comments exsist', function(done) {
+  chai.request('http://localhost:3000')
+  .post('/api/notes')
+  .send({comments: 'coding is cool'})
+  .end(function(err, res) {
+    expect(err).to.eql(null);
+    expect(res.body.comments).eql();
+    done();
+  });
+});
+
 });
