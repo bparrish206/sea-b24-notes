@@ -1,7 +1,7 @@
-var mondgoose = require('mongoos');
 var mongoose = require('mongoose');
 var bodyparser = require('body-parser');
 var express = require('express');
+var passport = require('passport');
 var app = express();
 
 app.use(bodyparser.json());
