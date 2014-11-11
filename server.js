@@ -11,8 +11,14 @@ app.set('secret', process.env.SECRET || 'changethistoo');
 app.use(passport.initialize());
 
 require('./lib/passport')(passport);
+var jwtauth = require('./lib/jwt_auth')(app.get('jwtSecret'));
+
+var notesRouter = express.Router();
+notesRouter.use(jwtauth);
+
 require('./routes/users_routes')(app, passport);
-require('./routes/notes_routes')(app);
+require('./routes/notes_routes')(app, jwtauth);
+app.use('/v1', notesRouter);
 
 var mongodbURL = "mongodb://heroku:LVZvO4MpsCjB90A3sa-wEN_FsRMYN-hxm1CdcMx0nSv7EwWqCmHSq_HRIgzc_UJj87u-jLv5LGBGEc8hhw0I4Q@dogen.mongohq.com:10041/app31416299";
 mongoose.connect(process.env.MONGO_URL || mongodbURL);
