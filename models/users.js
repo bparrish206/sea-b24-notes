@@ -3,11 +3,15 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 var jwt = require('jwt-simple');
+var moment = require('moment');
+
+
 var userSchema = mongoose.Schema({
 basic: {
 	email: 'string',
 	password: 'string'
-	}
+},
+admin: false
 });
 
 userSchema.methods.generateHash = function(password) {
@@ -21,7 +25,10 @@ return bcrypt.compareSync(password, this.basic.password);
 userSchema.methods.generateToken = function(secret){
 	var self = this;
 	var token = jwt.encode({
-		iss: self._id
+		iss: self._id,
+		exp: moment().add(1, 'day').valueOf(),
 	}, secret);
 	return token;
 };
+
+module.exports = mongoose.model('User', userSchema);
