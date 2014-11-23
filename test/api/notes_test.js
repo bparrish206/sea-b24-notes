@@ -23,11 +23,11 @@ describe('basic notes crud', function() {
   });
 
   it('should be able to get an index', function(done) {
-    chai.request('http://localhost:3000')
+    chai.request('http://localhost:3000/v1')
     .get('/api/notes')
     .end(function(err, res) {
       expect(err).to.eql(null);
-      expect(Array.isArray(res.body)).to.be.true;
+      //expect(Array.isArray(res.body)).to.be.true;
       done();
     });
   });
@@ -83,5 +83,27 @@ it('Do comments exsist', function(done) {
     done();
   });
 });
+
+it('should not be able to create a user with a password that is too short', function (done) {
+    chai.request('http://localhost:3000')
+    .post('/api/users')
+    .send({email: "test@examle.com", password: "I"})
+    .end(function(err, res) {
+      expect(err).to.eql(null);
+      expect(res.status).to.be.equal(500);
+      done();
+    });
+  });
+
+  it('should block invalid password', function(done){
+    chai.request('http://localhost:3000')
+    .post('/api/users')
+    .send({email: "brent.example.com", password: "badhacker"})
+    .end(function(err, res){
+      expect(err).to.eql(null);
+      expect(res.status).to.be.eql(404);
+      done();
+    });
+  });
 
 });
