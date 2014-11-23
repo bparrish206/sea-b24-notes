@@ -9,9 +9,10 @@ var moment = require('moment');
 var userSchema = mongoose.Schema({
 basic: {
 	email: 'string',
-	password: 'string'
+	password: 'string',
+	admin: false
 },
-admin: false
+
 });
 
 userSchema.methods.generateHash = function(password) {
