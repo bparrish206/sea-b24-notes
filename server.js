@@ -10,6 +10,12 @@ app.set('jwtSecret', process.env.JWT_SECRET || 'changethisordie');
 
 app.use(passport.initialize());
 
+app.use(express.static(__dirname + '/public'));
+
+app.get('/', function(req, res){
+  res.render('index.ejs');
+});
+
 require('./lib/passport')(passport);
 var jwtauth = require('./lib/jwt_auth')(app.get('jwtSecret'));
 
