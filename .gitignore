@@ -1,2 +1,7 @@
 db/
 node_modules/
+test/angular_testbundle.js
+**/*.sw
+bower_components/
+build/
+

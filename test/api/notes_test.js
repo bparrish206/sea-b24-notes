@@ -101,9 +101,8 @@ it('should not be able to create a user with a password that is too short', func
     .send({email: "brent.example.com", password: "badhacker"})
     .end(function(err, res){
       expect(err).to.eql(null);
-      expect(res.status).to.be.eql(404);
+      expect(res.status).to.be.eql(500);
       done();
     });
   });
-
 });
