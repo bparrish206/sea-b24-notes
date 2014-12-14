@@ -4,15 +4,15 @@ module.exports = function(app) {
   app.directive('newNoteDirec', function() {
     return {
       restrict: 'EAC',
-      templateUrl: '../../templates/notes/new_note_form.html',
+      templateUrl: 'templates/notes/new_note_form.html',
       scope: {save: '&',
-      fieldname: '=',
-      resourcename: '@'},
+              fieldname: '=',
+              resourcename: '@'},
       controller: function($scope) {
         console.log($scope.save);
         $scope.saveResource = function() {
-          $scope.save({resource: $scope.resource});
-          $scope.resource = null;
+            $scope.save({resource: $scope.resource});
+            $scope.resource = null;
         };
       }
     };

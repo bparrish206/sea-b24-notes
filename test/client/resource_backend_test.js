@@ -9,6 +9,8 @@ describe('resource service', function() {
     var $httpBackend;
     var notesService;
     var testNote = {'_id': '1', 'noteBody': 'hipster ipsum'};
+    var testNote2 = {'_id': '2', 'noteBody': 'code rulz node skulz'};
+    var deleteMsg = {msg:'success'};
 
     beforeEach(angular.mock.inject(function(ResourceBackend, _$httpBackend_){
         Service = ResourceBackend;
@@ -35,21 +37,19 @@ describe('resource service', function() {
 
             it('should be able to save a new note', function() {
                 $httpBackend.expectPOST('/api/notes').respond(200, testNote);
-                notesService.saveNewNote(testNote)
+                notesService.saveNew(testNote)
                 .success(function(data) {
                    expect(data.noteBody).toEqual('hipster ipsum');
                     expect(data._id).toEqual('1');
                   });
-
                   $httpBackend.flush();
                 });
 
-
               it('should be able to save a note', function() {
                 $httpBackend.expectPOST('/api/notes').respond(200, testNote);
-                notesService.saveNote(testNote)
+                notesService.saveNew(testNote)
                 .success(function(data) {
-                  expect(data.noteBody).toEqual('code rulz Node skulz!');
+                  expect(data.noteBody).toEqual('hipster ipsum');
                   expect(data._id).toEqual('1');
                 });
 
@@ -58,10 +58,21 @@ describe('resource service', function() {
 
 
               it('should be able to delete a note', function() {
-                $httpBackend.expectPOST('/api/notes').resond(200, testNote);
+                $httpBackend.expectDELETE('/api/notes/1').respond(200, deleteMsg);
                 notesService.delete(testNote)
                 .success(function(data) {
-                  expect(data.length).toEqual(0);
+                  expect(data.msg).toEqual('success');
+                });
+                $httpBackend.flush();
+              });
+
+
+              it("should be able to update a note", function() {
+                $httpBackend.expectPUT('/api/notes/2').respond(200, testNote2);
+                notesService.save(testNote2)
+                .success(function(data) {
+                  expect(data.noteBody).toEqual('code rulz node skulz');
+                  expect(data._id).toEqual('2');
                 });
                 $httpBackend.flush();
               });

@@ -3,6 +3,9 @@ require('angular-route');
 
 var notesApp = angular.module('notesApp', ['ngRoute']);
 
+require('./directives/dummy_direc')(notesApp);
+require('./directives/new_note_form_direc')(notesApp);
+
 //services
 require('./services/resource_backend_service')(notesApp);
 
