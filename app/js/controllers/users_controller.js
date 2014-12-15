@@ -1,26 +1,12 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('UsersCtrl', ['$scope', '$http', '$cookies', '$base64', '$location', function($scope, $http, $cookies, $base64, $location){
-    $scope.errors = [];
+  app.controller('UsersCtrl', ['$scope', 'status', '$base64', function($scope, status, $base64){
+
     $scope.signIn = function() {
       $scope.errors = [];
-      console.log($scope.user.email);
-      console.log($scope.user.password);
-      $http.defaults.headers.common['Authorization'] = 'Basic ' + $base64.encode($scope.user.email + ':' + $scope.user.password);
-
-      $http({
-        method: 'GET',
-        url: '/api/users'
-      })
-      .success(function(data) {
-        console.log('success');
-        $cookies.jwt = data.jwt;
-        $location.path('/notes');
-      })
+      status.signIn($scope.user.email, $scope.user.password)
       .error(function(data) {
-        console.log('error!');
-        console.log(data);
         $scope.errors.push(data);
       });
     };
@@ -32,18 +18,11 @@ module.exports = function(app) {
 
       if ($scope.errors.length) return;
 
-      $http({
-        method: 'POST',
-        url: 'api/users',
-        data: $scope.newUser,
-      })
-      .success(function(data) {
-        console.log('success!');
-        $cookies.jwt = data.jwt;
-        $location.path('/notes');
-      })
+      $scope.newUser.email = $base64.encode($scope.newUser.email);
+      $scope.newUser.password = $base64.encode($scope.newUser.password);
+
+      status.signUp($scope.newUser)
       .error(function(data) {
-        console.log(data);
         $scope.errors.push(data);
       });
     };
