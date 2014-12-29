@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('UsersCtrl', ['status', '$scope', function(status, $scope){
+  app.controller('UsersCtrl', ['status', '$scope', '$base64', function(status, $scope, $base64){
 
     $scope.signIn = function() {
       $scope.errors = [];

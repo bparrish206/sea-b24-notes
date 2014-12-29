@@ -6,7 +6,7 @@
 </head>
 <body data-ng-app="notesApp" data-ng-controller="notesCtrl">
   <header>
-    <h3 data-ng-if="currentUser">Welcome {{currentUser}}</h3>
+    <h3 data-ng-show="currentUser">Welcome {{currentUser}}</h3>
     <button data-ng-click="currentUser ? signOut() : signIn()">{{ currentUser ? 'Log Out' : 'Log In'}}</button>
   </header>
   <main data-ng-view>
