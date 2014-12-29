@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>Notes</title>
 </head>
-<body>
-  <h1>Notes!</h1>
-  <div data-ng-app="notesApp">
-    <div data-ng-view>
-    </div>
-  </div>
+<body data-ng-app="notesApp" data-ng-controller="notesCtrl">
+  <header>
+    <h3 data-ng-if="currentUser">Welcome {{currentUser}}</h3>
+    <button data-ng-click="currentUser ? signOut() : signIn()">{{ currentUser ? 'Log Out' : 'Log In'}}</button>
+  </header>
+  <main data-ng-view>
 
+  </main>
   <script src="client_bundle.js"></script>
 </body>
 </html>
