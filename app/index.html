@@ -4,11 +4,8 @@
   <meta charset="UTF-8">
   <title>Notes</title>
 </head>
-<body data-ng-app="notesApp" data-ng-controller="notesCtrl">
-  <header>
-    <h3 data-ng-show="currentUser">Welcome {{currentUser}}</h3>
-    <button data-ng-click="currentUser ? signOut() : signIn()">{{ currentUser ? 'Log Out' : 'Log In'}}</button>
-  </header>
+<body data-ng-app="notesApp">
+
   <main data-ng-view>
 
   </main>
