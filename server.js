@@ -1,30 +1,25 @@
+var express = require('express');
 var mongoose = require('mongoose');
 var bodyparser = require('body-parser');
-var express = require('express');
 var passport = require('passport');
 var app = express();
 
 mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost/notes_development');
 app.use(bodyparser.json());
+app.use(express.static(__dirname + '/build'));
 app.set('jwtSecret', process.env.JWT_SECRET || 'changethisordie');
 
 app.use(passport.initialize());
 
-app.use(express.static(__dirname + '/build'));
-
-app.get('/', function(req, res){
-  res.render('index.ejs');
-});
-
 require('./lib/passport')(passport);
 var jwtauth = require('./lib/jwt_auth')(app.get('jwtSecret'));
 
-var notesRouter = express.Router();
-notesRouter.use(jwtauth);
+//var notesRouter = express.Router();
+//notesRouter.use(jwtauth);
 
 require('./routes/users_routes')(app, passport);
-require('./routes/notes_routes')(app, jwtauth);
-app.use('/v1', notesRouter);
+require('./routes/notes_routes')(app);
+//app.use('/v1', app);
 
 app.set('port', process.env.PORT || 3000);
 app.listen(app.get('port'), function() {
