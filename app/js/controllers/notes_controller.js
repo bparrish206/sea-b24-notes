@@ -15,8 +15,12 @@ module.exports = function(app) {
     };
 
    $scope.saveNewNote = function(newNote) {
-      notesBackend.saveNew(newNote)
+    var time;
+    notesBackend.saveNew(newNote)
       .success(function(data) {
+        time = new Date();
+        data.time = time.toLocaleTimeString();
+        data.date =time.toDateString();
         $scope.notes.push(data);
         $scope.newNote = null;
       });

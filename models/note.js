@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 
 var noteSchema = mongoose.Schema({
   noteBody: { type : String },
-  comments: [{ body: String, date: Date }],
+  date: {type: String},
+  time: { type: String}
 });
 
 noteSchema.path('noteBody').validate(function (val) {
