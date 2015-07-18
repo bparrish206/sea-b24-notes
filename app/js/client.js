@@ -28,6 +28,6 @@ notesApp.config(['$routeProvider', function($routeProvider) {
     controllers: 'UsersCtrl'
   })
   .otherwise({
-    redirectTo: '/users'  
+    redirectTo: '/users'
   });
 }]);
