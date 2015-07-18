@@ -7,11 +7,12 @@ module.exports = function(app) {
       templateUrl: 'templates/notes/new_note_form.html',
       scope: {save: '&',
               fieldname: '=',
-              resourcename: '@'},
+              resourcename: '@',
+            },
       controller: function($scope) {
-        console.log($scope.save);
         $scope.saveResource = function() {
             $scope.save({resource: $scope.resource});
+            console.log($scope.resource);
             $scope.resource = null;
         };
       }
