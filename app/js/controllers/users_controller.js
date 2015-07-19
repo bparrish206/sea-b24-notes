@@ -21,7 +21,6 @@ module.exports = function(app) {
       $scope.newUser.name = $base64.encode($scope.newUser.name);
       $scope.newUser.email = $base64.encode($scope.newUser.email);
       $scope.newUser.password = $base64.encode($scope.newUser.password);
-
       status.signUp($scope.newUser)
       .error(function(data) {
         $scope.errors.push(data);

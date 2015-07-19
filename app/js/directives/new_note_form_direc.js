@@ -12,7 +12,6 @@ module.exports = function(app) {
       controller: function($scope) {
         $scope.saveResource = function() {
             $scope.save({resource: $scope.resource});
-            console.log($scope.resource);
             $scope.resource = null;
         };
       }
