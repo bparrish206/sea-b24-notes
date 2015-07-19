@@ -13,6 +13,7 @@ module.exports = function(app, passport) {
       if (user) return res.status(500).send('cannot create that user');
 
       var newUser = new User();
+      newUser.basic.name = req.body.name;
       newUser.basic.email = req.body.email;
       newUser.basic.password = newUser.generateHash(req.body.password);
       newUser.save(function(err, data) {
