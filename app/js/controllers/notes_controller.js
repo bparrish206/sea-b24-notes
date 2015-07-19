@@ -16,11 +16,12 @@ module.exports = function(app) {
 
    $scope.saveNewNote = function(newNote) {
     var time;
+    console.log(newNote);
+    time = new Date();
+        newNote.time = time.toLocaleTimeString();
+        newNote.date =time.toDateString();
     notesBackend.saveNew(newNote)
       .success(function(data) {
-        time = new Date();
-        data.time = time.toLocaleTimeString();
-        data.date =time.toDateString();
         $scope.notes.push(data);
         $scope.newNote = null;
       });

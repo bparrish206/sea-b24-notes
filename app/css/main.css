@@ -9,6 +9,11 @@ color: #555753;
 text-align: center;
 }
 
+#loginPage {
+  margin: 10% 41%;
+}
+
+
 #newNote {
 text-align: center;
 }
@@ -18,18 +23,18 @@ text-align: center;
   border: solid 2px #ccc;
   border-radius: 1%;
   margin: 1% 20%;
+  padding-top: 12px;
   padding-left: 15px;
 }
 
 #edit {
 float: right;
-margin-top: -70px;
-margin-right: 6.25%;
+margin-right: 0.25%;
 }
 
 #delete {
   float: right;
-  margin-top: -70px;
+  margin-right: -6px;
 }
 
 #date {
@@ -39,5 +44,28 @@ margin-right: 6.25%;
   font-style: italic;
 }
 
+#editBox {
+  margin: 0% 20%;
+  border: solid 2px #ccc;
+  border-radius: 2em;
+  background: #FFDC00;
+  padding: 20px;
+  padding-right: 0;
+}
 
+#editBox input {
+  width: 80%;
+  padding: 5px;
+}
 
+#editBox label {
+  margin: 0 43%;
+}
+
+#save {
+  margin-left: 25px;
+}
+
+#cancel {
+  margin-left: -13px;
+}
