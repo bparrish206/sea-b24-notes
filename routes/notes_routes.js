@@ -1,5 +1,6 @@
 'use strict';
 var Note = require('../models/note');
+var users = require('./users_routes');
 
 module.exports = function(app) {
   app.get('/api/notes', function(req ,res) {

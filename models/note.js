@@ -4,7 +4,7 @@ var noteSchema = mongoose.Schema({
   noteBody: { type : String },
   date: {type: String},
   time: { type: String},
-  user: {type: String},
+  name: {type: String},
 });
 
 //noteSchema.path('noteBody').validate(function (val) {
