@@ -6,9 +6,7 @@
   <div data-ng-repeat="note in notes |orderBy:'date' |orderBy:'time':!reverse">
     <div data-ng-hide="note.editing">
     <div id="noteBox">
-    <script type="text/javascript">var showButtons = document.cookie.indexOf('Beezs'))
-      return showButtons</script>
-    <div id="buttonBox" data-ng-show='note.name'>
+    <div id="buttonBox">
       <button id="edit" data-ng-click="note.editing = true">Edit</button>
       <button id="delete" data-ng-click="deleteNote(note)">Delete</button>
       </div>
