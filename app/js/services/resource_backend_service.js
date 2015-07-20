@@ -19,7 +19,7 @@ module.exports = function(app) {
         saveNew: function(resource) {
           return $http({
             method: 'POST',
-            url: '/api/' + resourceName,    
+            url: '/api/' + resourceName,
             data: resource
           })
           .error(handleErrors);

@@ -30,6 +30,7 @@ module.exports = function(app) {
         })
         .success(function(data) {
           $cookies.jwt = data.jwt;
+          $cookies.name = newUser.name;
           $location.path('/notes');
         });
       },

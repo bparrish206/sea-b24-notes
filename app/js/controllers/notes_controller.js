@@ -16,10 +16,10 @@ module.exports = function(app) {
 
    $scope.saveNewNote = function(newNote) {
     var time;
-    console.log(newNote);
     time = new Date();
         newNote.time = time.toLocaleTimeString();
         newNote.date =time.toDateString();
+        newNote.name = $cookies.name;
     notesBackend.saveNew(newNote)
       .success(function(data) {
         $scope.notes.push(data);
