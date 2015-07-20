@@ -3,11 +3,15 @@
 <div data-ng-controller="notesCtrl" data-ng-init="index()">
   <div data-new-note-direc save="saveNewNote(resource)" fieldname="'noteBody'" resourcename="Note"></div>
 <div data-
-  <div data-ng-repeat="note in notes">
+  <div data-ng-repeat="note in notes |orderBy:'date' |orderBy:'time':!reverse">
     <div data-ng-hide="note.editing">
     <div id="noteBox">
+    <script type="text/javascript">var showButtons = document.cookie.indexOf('Beezs'))
+      return showButtons</script>
+    <div id="buttonBox" data-ng-show='note.name'>
       <button id="edit" data-ng-click="note.editing = true">Edit</button>
       <button id="delete" data-ng-click="deleteNote(note)">Delete</button>
+      </div>
       <p>{{note.noteBody}}</p>
       <p id="date">{{note.date}} {{note.time}} - {{note.name}}</p>
     </div>
