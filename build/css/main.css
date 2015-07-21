@@ -1,0 +1,71 @@
+
+body {
+  background:#FF851B;
+  font: 16px/26px Helvetica, Helvetica Neue, Arial;
+}
+
+h1 {
+color: #555753;
+text-align: center;
+}
+
+#loginPage {
+  margin: 10% 41%;
+}
+
+
+#newNote {
+text-align: center;
+}
+
+#noteBox {
+  background:#0074D9;
+  border: solid 2px #ccc;
+  border-radius: 1%;
+  margin: 1% 20%;
+  padding-top: 12px;
+  padding-left: 15px;
+}
+
+#edit {
+float: right;
+margin-right: 0.25%;
+}
+
+#delete {
+  float: right;
+  margin-right: -6px;
+}
+
+#date {
+  font-size: 75%;
+  margin-bottom: 0;
+  padding-left: 10px;
+  font-style: italic;
+}
+
+#editBox {
+  margin: 0% 20%;
+  border: solid 2px #ccc;
+  border-radius: 2em;
+  background: #FFDC00;
+  padding: 20px;
+  padding-right: 0;
+}
+
+#editBox input {
+  width: 80%;
+  padding: 5px;
+}
+
+#editBox label {
+  margin: 0 43%;
+}
+
+#save {
+  margin-left: 25px;
+}
+
+#cancel {
+  margin-left: -13px;
+}
