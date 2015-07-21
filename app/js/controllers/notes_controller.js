@@ -6,6 +6,7 @@ module.exports = function(app) {
     if(!$cookies.jwt || $cookies.length > 0) return $location.path('/users');
 
     $http.defaults.headers.common.jwt = $cookies.jwt;
+    $scope.newName = $cookies.name;
 
     $scope.index = function() {
       notesBackend.index()
@@ -22,6 +23,7 @@ module.exports = function(app) {
         newNote.name = $cookies.name;
     notesBackend.saveNew(newNote)
       .success(function(data) {
+        //$scope.newName = newNote.name;
         $scope.notes.push(data);
         $scope.newNote = null;
       });
