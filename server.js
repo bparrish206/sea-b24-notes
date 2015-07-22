@@ -4,7 +4,12 @@ var bodyparser = require('body-parser');
 var passport = require('passport');
 var app = express();
 
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost/notes_development');
+mongoose.connect(process.env.MONGO_URL || process.env.MONGOHQ_URL ||'mongodb://localhost/notes_development');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {'db is connected';
+});
+
 app.use(bodyparser.json());
 app.use(express.static(__dirname + '/build'));
 app.set('jwtSecret', process.env.JWT_SECRET || 'changethisordie');
@@ -21,11 +26,11 @@ notesRouter.use(jwtauth);
 require('./routes/notes_routes')(app);
 require('./routes/users_routes')(app, passport);
 
-app.use(function(err, req, res, next) {
- res.status(500).send('error!');
-});
+//app.use(function(err, req, res, next) {
+ //res.status(500).send('error!');
+//});
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3076);
 app.listen(app.get('port'), function() {
   console.log('server running on port: %d', app.get('port'));
 });
