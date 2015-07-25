@@ -3,6 +3,7 @@
 module.exports = function(app) {
   app.controller('UsersCtrl', ['status', '$scope', '$base64', function(status, $scope, $base64){
 
+
     $scope.signIn = function() {
       $scope.errors = [];
       status.signIn($scope.user.email, $scope.user.password)

@@ -5,8 +5,10 @@
   <title>Brent's Blog</title>
    <link href='css/main.css' rel=stylesheet>
 </head>
-<body data-ng-app="notesApp">
-
+<body data-ng-app="notesApp" data-ng-controller="notesCtrl">
+  <header>
+    <h3 data-ng-if="newNote.name">Welcome {{newNote.name}}</h3>
+  </header>
   <main data-ng-view>
 
   </main>
