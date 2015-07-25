@@ -5,7 +5,7 @@ module.exports = function(app) {
 
     $scope.signIn = function() {
       $scope.errors = [];
-      status.signIn($scope.user.name, $scope.user.email, $scope.user.password)
+      status.signIn($scope.user.email, $scope.user.password)
       .error(function(data) {
         $scope.errors.push(data);
       });

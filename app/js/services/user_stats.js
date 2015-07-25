@@ -10,7 +10,7 @@ module.exports = function(app) {
 
       signIn : function(email, password) {
         $http.defaults.headers.common.Authorization = 'Basic ' + $base64.encode(email + ':' + password);
-        this.status = 'In';
+        //this.status = 'In';
         return $http({
           method: 'GET',
           url: '/api/users'
@@ -18,7 +18,10 @@ module.exports = function(app) {
         .success(function(data) {
           $cookies.jwt = data.jwt;
           $location.path('/notes');
-        });
+        })
+        .error(function(data) {
+        console.log(data);
+      });
       },
 
       signUp : function(newUser) {
