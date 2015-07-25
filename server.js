@@ -7,7 +7,7 @@ var app = express();
 mongoose.connect(process.env.MONGO_URL || process.env.MONGOHQ_URL ||'mongodb://localhost/notes_development');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {'db is connected';
+db.once('open', function() {console.log('db is connected');
 });
 
 app.use(bodyparser.json());
