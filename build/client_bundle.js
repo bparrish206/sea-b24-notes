@@ -15,6 +15,7 @@ require('./directives/new_note_form_direc')(notesApp);
 
 //services
 require('./services/resource_backend_service')(notesApp);
+require('./services/user_stats')(notesApp);
 
 //controller
 require('./controllers/notes_controller')(notesApp);
@@ -34,7 +35,7 @@ notesApp.config(['$routeProvider', function($routeProvider) {
   });
 }]);
 
-},{"./../../bower_components/angular-base64/angular-base64.js":9,"./../../bower_components/angular-base64/angular-base64.min.js":10,"./../../bower_components/angular-cookies/angular-cookies.js":11,"./../../bower_components/angular-route/angular-route.js":12,"./../../bower_components/angular/angular":13,"./controllers/notes_controller":2,"./directives/dummy_direc":4,"./directives/new_note_form_direc":5,"./services/resource_backend_service":6,"./users/users":8}],2:[function(require,module,exports){
+},{"./../../bower_components/angular-base64/angular-base64.js":9,"./../../bower_components/angular-base64/angular-base64.min.js":10,"./../../bower_components/angular-cookies/angular-cookies.js":11,"./../../bower_components/angular-route/angular-route.js":12,"./../../bower_components/angular/angular":13,"./controllers/notes_controller":2,"./directives/dummy_direc":4,"./directives/new_note_form_direc":5,"./services/resource_backend_service":6,"./services/user_stats":7,"./users/users":8}],2:[function(require,module,exports){
 'use strict';
 
 module.exports = function(app) {
@@ -91,7 +92,7 @@ module.exports = function(app) {
 
     $scope.signIn = function() {
       $scope.errors = [];
-      status.signIn($scope.user.name, $scope.user.email, $scope.user.password)
+      status.signIn($scope.user.email, $scope.user.password)
       .error(function(data) {
         $scope.errors.push(data);
       });
@@ -211,7 +212,7 @@ module.exports = function(app) {
 
       signIn : function(email, password) {
         $http.defaults.headers.common.Authorization = 'Basic ' + $base64.encode(email + ':' + password);
-        this.status = 'In';
+        //this.status = 'In';
         return $http({
           method: 'GET',
           url: '/api/users'
@@ -219,7 +220,10 @@ module.exports = function(app) {
         .success(function(data) {
           $cookies.jwt = data.jwt;
           $location.path('/notes');
-        });
+        })
+        .error(function(data) {
+        console.log(data);
+      });
       },
 
       signUp : function(newUser) {
