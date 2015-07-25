@@ -9,7 +9,8 @@ module.exports = function(app, passport) {
   });
 
   app.post('/api/users', function(req, res) {
-
+    //var test = User.find({email:'brentparrish76@gmail.com'});
+    //console.log(test);
 
     User.findOne({'email': req.body.email}, function(err, user) {
       if (err) return res.status(500).send('server error');
