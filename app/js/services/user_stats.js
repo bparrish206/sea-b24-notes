@@ -4,6 +4,7 @@ module.exports = function(app) {
     return {
       signOut : function() {
         delete $cookies.jwt;
+        delete $cookies.name;
         $location.path('/users');
       },
 
