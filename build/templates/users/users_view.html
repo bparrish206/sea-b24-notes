@@ -1,5 +1,5 @@
 <div id="loginPage">
-<h1>Brent's Blog login</h1>
+<h1>Brent's Blog</h1>
 <div data-ng-controller="UsersCtrl">
   <div data-ng-hide="userName">
     <form name="newUser">
@@ -15,8 +15,9 @@
       </form>
       <button data-ng-click="signUp()">Create New User</button></br>
   </div>
-  <div data-ng-show="existingUser">
-   <h2>Welcome back {{userName}}</h2>
+
+  <div data-ng-show="userName">
+  <h2 data-ng-show="userName">Welcome back {{userName}}</h2>
     <form name="userForm">
       <label>Email</label><br/>
       <input type="text" data-ng-model="user.email"><br/>
@@ -26,6 +27,6 @@
     </form>
   </div>
 <br/>
- <button data-ng-click="existingUser = !existingUser">{{existingUser ? 'Create New User' : 'Log in'}}</button>
+
 </div>
 </div>
