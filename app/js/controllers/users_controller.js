@@ -6,9 +6,12 @@ module.exports = function(app) {
     $scope.userName = $cookies.name;
 
     $scope.signOut = function() {
-        status.signOut()
+        status.signOut();
       };
 
+    $scope.newB = function(){
+      status.newB();
+    };
 
     $scope.signIn = function() {
       $scope.errors = [];

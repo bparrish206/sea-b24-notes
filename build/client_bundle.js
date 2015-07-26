@@ -93,9 +93,12 @@ module.exports = function(app) {
     $scope.userName = $cookies.name;
 
     $scope.signOut = function() {
-        status.signOut()
+        status.signOut();
       };
 
+    $scope.newB = function(){
+      status.newB();
+    };
 
     $scope.signIn = function() {
       $scope.errors = [];
@@ -221,8 +224,12 @@ module.exports = function(app) {
     return {
       signOut : function() {
         delete $cookies.jwt;
-        delete $cookies.name;
         $location.path('/users');
+      },
+
+      newB : function() {
+        delete $cookies.name;
+        document.location.reload(true);
       },
 
       signIn : function(email, password) {

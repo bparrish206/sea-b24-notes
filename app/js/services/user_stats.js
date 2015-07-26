@@ -4,8 +4,12 @@ module.exports = function(app) {
     return {
       signOut : function() {
         delete $cookies.jwt;
-        delete $cookies.name;
         $location.path('/users');
+      },
+
+      newB : function() {
+        delete $cookies.name;
+        document.location.reload(true);
       },
 
       signIn : function(email, password) {
