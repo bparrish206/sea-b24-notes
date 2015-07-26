@@ -88,7 +88,9 @@ module.exports = function(app) {
 'use strict';
 
 module.exports = function(app) {
-  app.controller('UsersCtrl', ['status', '$scope', '$base64', function(status, $scope, $base64){
+  app.controller('UsersCtrl', ['status', '$scope', '$base64', '$cookies', function(status, $scope, $base64, $cookies){
+
+    $scope.userName = $cookies.name;
 
     $scope.signIn = function() {
       $scope.errors = [];
@@ -119,6 +121,7 @@ module.exports = function(app) {
         $scope.errors.push(data);
       });
     };
+    console.log($cookies.name);
   }]);
 };
 
@@ -212,14 +215,12 @@ module.exports = function(app) {
   app.factory('status', ['$location', '$cookies', '$http', '$base64', function($location, $cookies, $http, $base64) {
     return {
       signOut : function() {
-        this.status = 'Out';
         delete $cookies.jwt;
         $location.path('/users');
       },
 
       signIn : function(email, password) {
         $http.defaults.headers.common.Authorization = 'Basic ' + $base64.encode(email + ':' + password);
-        //this.status = 'In';
         return $http({
           method: 'GET',
           url: '/api/users'
@@ -234,7 +235,6 @@ module.exports = function(app) {
       },
 
       signUp : function(newUser) {
-        this.status = 'In';
         return $http({
           method: 'POST',
           url: 'api/users',
@@ -246,8 +246,6 @@ module.exports = function(app) {
           $location.path('/notes');
         });
       },
-
-      status : 'Out'
     };
   }]);
 };
