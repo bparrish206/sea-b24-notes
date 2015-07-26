@@ -1,8 +1,9 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('UsersCtrl', ['status', '$scope', '$base64', function(status, $scope, $base64){
+  app.controller('UsersCtrl', ['status', '$scope', '$base64', '$cookies', function(status, $scope, $base64, $cookies){
 
+    $scope.userName = $cookies.name;
 
     $scope.signIn = function() {
       $scope.errors = [];
@@ -33,5 +34,6 @@ module.exports = function(app) {
         $scope.errors.push(data);
       });
     };
+    console.log($cookies.name);
   }]);
 };
