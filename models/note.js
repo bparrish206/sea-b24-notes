@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var noteSchema = mongoose.Schema({
   noteBody: { type : String },
   date: {type: String},
+  month: {type: String},
   time: { type: String},
   name: {type: String},
 });

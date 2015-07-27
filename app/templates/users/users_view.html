@@ -1,7 +1,7 @@
 <div id="loginPage">
 <h1>Brent's Blog</h1>
 <div data-ng-controller="UsersCtrl">
-  <div data-ng-hide="userName">
+  <div data-ng-hide="userName" id="sign">
     <form name="newUser">
     <h3> Create a new account</h3>
     <label>User Name</label><br/>
@@ -14,10 +14,10 @@
       <input type="password" data-ng-model="newUser.passwordConfirmation"><br/>
       </form>
       <button data-ng-click="signUp()">Create New User</button>
-      <button data-ng-click="reruns()">Sign In</button>
+      <button data-ng-click="userName = !userName">Sign In</button>
   </div>
 
-  <div data-ng-show="userName">
+  <div data-ng-show="userName" id="back">
   <h2 data-ng-show="userName">Welcome back {{userName}}</h2>
     <form name="userForm">
       <label>Email</label><br/>

@@ -57,11 +57,12 @@ module.exports = function(app) {
     var time;
     time = new Date();
         newNote.time = time.toLocaleTimeString();
-        newNote.date =time.toDateString();
+        newNote.month = time.getMonth();
+        newNote.date =time.getDate();
+        console.log(newNote);
         newNote.name = $cookies.name;
     notesBackend.saveNew(newNote)
       .success(function(data) {
-        //$scope.newName = newNote.name;
         $scope.notes.push(data);
         $scope.newNote = null;
       });
@@ -236,10 +237,11 @@ module.exports = function(app) {
         document.location.reload(true);
       },
 
-      reruns : function() {
-        $cookies.name = "Friend";
-        document.location.reload(true);
-      },
+      //reruns : function() {
+        //var clz = document.getelementbyid("sign");
+       // clz.class.show();
+       // document.location.reload(true);
+      //},
 
       signIn : function(email, password) {
         $http.defaults.headers.common.Authorization = 'Basic ' + $base64.encode(email + ':' + password);
