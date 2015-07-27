@@ -13,6 +13,10 @@ module.exports = function(app) {
       status.newB();
     };
 
+    $scope.reruns = function() {
+      status.reruns();
+    };
+
     $scope.signIn = function() {
       $scope.errors = [];
       status.signIn($scope.user.email, $scope.user.password)

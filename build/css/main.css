@@ -9,6 +9,11 @@ color: #555753;
 text-align: center;
 }
 
+button {
+  margin-top: 20px;
+  background-color: #DDDDDC;
+}
+
 #loginPage {
   margin: 10% 41%;
 }
