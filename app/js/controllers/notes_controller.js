@@ -19,11 +19,12 @@ module.exports = function(app) {
     var time;
     time = new Date();
         newNote.time = time.toLocaleTimeString();
-        newNote.date =time.toDateString();
+        newNote.month = time.getMonth();
+        newNote.date =time.getDate();
+        console.log(newNote);
         newNote.name = $cookies.name;
     notesBackend.saveNew(newNote)
       .success(function(data) {
-        //$scope.newName = newNote.name;
         $scope.notes.push(data);
         $scope.newNote = null;
       });
