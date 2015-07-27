@@ -5,6 +5,18 @@ module.exports = function(app) {
 
     $scope.userName = $cookies.name;
 
+    $scope.signOut = function() {
+        status.signOut();
+      };
+
+    $scope.newB = function(){
+      status.newB();
+    };
+
+    $scope.reruns = function() {
+      status.reruns();
+    };
+
     $scope.signIn = function() {
       $scope.errors = [];
       status.signIn($scope.user.email, $scope.user.password)

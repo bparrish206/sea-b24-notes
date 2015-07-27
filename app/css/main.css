@@ -9,6 +9,11 @@ color: #555753;
 text-align: center;
 }
 
+button {
+  margin-top: 20px;
+  background-color: #DDDDDC;
+}
+
 #loginPage {
   margin: 10% 41%;
 }
@@ -68,4 +73,8 @@ margin-right: 0.25%;
 
 #cancel {
   margin-left: -13px;
+}
+
+#signOut {
+  margin: 0% 0% 0 91%;
 }

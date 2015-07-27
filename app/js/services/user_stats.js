@@ -7,6 +7,16 @@ module.exports = function(app) {
         $location.path('/users');
       },
 
+      newB : function() {
+        delete $cookies.name;
+        document.location.reload(true);
+      },
+
+      reruns : function() {
+        $cookies.name = "Friend";
+        document.location.reload(true);
+      },
+
       signIn : function(email, password) {
         $http.defaults.headers.common.Authorization = 'Basic ' + $base64.encode(email + ':' + password);
         return $http({

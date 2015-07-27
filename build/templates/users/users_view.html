@@ -13,7 +13,8 @@
       <label>Confirm Password</label><br/>
       <input type="password" data-ng-model="newUser.passwordConfirmation"><br/>
       </form>
-      <button data-ng-click="signUp()">Create New User</button></br>
+      <button data-ng-click="signUp()">Create New User</button>
+      <button data-ng-click="reruns()">Sign In</button>
   </div>
 
   <div data-ng-show="userName">
@@ -24,9 +25,9 @@
       <label>Password</label><br/>
       <input type="password" data-ng-model="user.password"><br/>
       <button data-ng-click="signIn()">Sign In</button>
+      <button data-ng-click="newB()">Create New User</button><br/>
     </form>
   </div>
-<br/>
 
 </div>
 </div>
