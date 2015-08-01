@@ -1,30 +1,33 @@
 <div id="loginPage">
-<h1>Brent's Blog login</h1>
+<h1>Brent's Blog</h1>
 <div data-ng-controller="UsersCtrl">
-  <div data-ng-hide="existingUser">
+  <div data-ng-hide="userName" id="sign">
     <form name="newUser">
     <h3> Create a new account</h3>
     <label>User Name</label><br/>
     <input type="text" data-ng-model="newUser.name"><br/>
-      <label>Email Address</label><br/>
+      <label id="email">Email Address</label><br/>
       <input type="text" data-ng-model="newUser.email"><br/>
       <label>New Password</label><br/>
       <input type="password" data-ng-model="newUser.password"><br/>
       <label>Confirm Password</label><br/>
       <input type="password" data-ng-model="newUser.passwordConfirmation"><br/>
-      <button data-ng-click="signUp()">Create New User</button></br>
-    </form>
+      </form>
+      <button data-ng-click="signUp()">Create New User</button>
+      <button data-ng-click="userName = !userName">Sign In</button>
   </div>
-  <div data-ng-show="existingUser">
+
+  <div data-ng-show="userName" id="back">
+  <h2 data-ng-show="userName">Welcome back {{userName}}</h2>
     <form name="userForm">
       <label>Email</label><br/>
       <input type="text" data-ng-model="user.email"><br/>
       <label>Password</label><br/>
       <input type="password" data-ng-model="user.password"><br/>
       <button data-ng-click="signIn()">Sign In</button>
+      <button data-ng-click="newB()">Create New User</button><br/>
     </form>
   </div>
-<br/>
-  <button data-ng-click="existingUser = !existingUser">{{existingUser ? 'Create New User' : 'Log in to existing account'}}</button>
+
 </div>
 </div>

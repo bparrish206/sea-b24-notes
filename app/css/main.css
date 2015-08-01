@@ -4,9 +4,14 @@ body {
   font: 16px/26px Helvetica, Helvetica Neue, Arial;
 }
 
-h1 {
+h1, h2 {
 color: #555753;
 text-align: center;
+}
+
+button {
+  margin-top: 20px;
+  background-color: #DDDDDC;
 }
 
 #loginPage {
@@ -22,9 +27,13 @@ text-align: center;
   background:#0074D9;
   border: solid 2px #ccc;
   border-radius: 1%;
-  margin: 1% 20%;
+  margin: 1% 25%;
   padding-top: 12px;
   padding-left: 15px;
+}
+
+#noteBox > p:nth-child(2) {
+  margin-top: 0px;
 }
 
 #edit {
@@ -68,4 +77,8 @@ margin-right: 0.25%;
 
 #cancel {
   margin-left: -13px;
+}
+
+#signOut {
+  margin: 0% 0% 0 91%;
 }

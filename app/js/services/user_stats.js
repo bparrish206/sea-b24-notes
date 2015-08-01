@@ -3,14 +3,23 @@ module.exports = function(app) {
   app.factory('status', ['$location', '$cookies', '$http', '$base64', function($location, $cookies, $http, $base64) {
     return {
       signOut : function() {
-        this.status = 'Out';
         delete $cookies.jwt;
         $location.path('/users');
       },
 
+      newB : function() {
+        delete $cookies.name;
+        document.location.reload(true);
+      },
+
+      //reruns : function() {
+        //var clz = document.getelementbyid("sign");
+       // clz.class.show();
+       // document.location.reload(true);
+      //},
+
       signIn : function(email, password) {
         $http.defaults.headers.common.Authorization = 'Basic ' + $base64.encode(email + ':' + password);
-        this.status = 'In';
         return $http({
           method: 'GET',
           url: '/api/users'
@@ -18,11 +27,13 @@ module.exports = function(app) {
         .success(function(data) {
           $cookies.jwt = data.jwt;
           $location.path('/notes');
-        });
+        })
+        .error(function(data) {
+        console.log(data);
+      });
       },
 
       signUp : function(newUser) {
-        this.status = 'In';
         return $http({
           method: 'POST',
           url: 'api/users',
@@ -34,8 +45,6 @@ module.exports = function(app) {
           $location.path('/notes');
         });
       },
-
-      status : 'Out'
     };
   }]);
 };
