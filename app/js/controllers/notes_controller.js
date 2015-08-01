@@ -30,7 +30,6 @@ module.exports = function(app) {
       });
     };
 
-
   $scope.saveNote = function(note) {
       notesBackend.save(note)
       .success(function() {
