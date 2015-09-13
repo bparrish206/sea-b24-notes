@@ -90,7 +90,9 @@ module.exports = function(app) {
 module.exports = function(app) {
   app.controller('UsersCtrl', ['status', '$scope', '$base64', '$cookies', function(status, $scope, $base64, $cookies){
 
+    if ($cookies.name == undefined) $cookies.name = "Friend";
     $scope.userName = $cookies.name;
+
 
     $scope.signOut = function() {
         status.signOut();
@@ -235,12 +237,6 @@ module.exports = function(app) {
         delete $cookies.name;
         document.location.reload(true);
       },
-
-      //reruns : function() {
-        //var clz = document.getelementbyid("sign");
-       // clz.class.show();
-       // document.location.reload(true);
-      //},
 
       signIn : function(email, password) {
         $http.defaults.headers.common.Authorization = 'Basic ' + $base64.encode(email + ':' + password);

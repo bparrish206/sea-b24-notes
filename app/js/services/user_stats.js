@@ -12,12 +12,6 @@ module.exports = function(app) {
         document.location.reload(true);
       },
 
-      //reruns : function() {
-        //var clz = document.getelementbyid("sign");
-       // clz.class.show();
-       // document.location.reload(true);
-      //},
-
       signIn : function(email, password) {
         $http.defaults.headers.common.Authorization = 'Basic ' + $base64.encode(email + ':' + password);
         return $http({

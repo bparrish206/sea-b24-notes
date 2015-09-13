@@ -3,7 +3,9 @@
 module.exports = function(app) {
   app.controller('UsersCtrl', ['status', '$scope', '$base64', '$cookies', function(status, $scope, $base64, $cookies){
 
+    if ($cookies.name == undefined) $cookies.name = "Friend";
     $scope.userName = $cookies.name;
+
 
     $scope.signOut = function() {
         status.signOut();
