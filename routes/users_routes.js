@@ -1,6 +1,7 @@
 'use strict';
 
 var User = require('../models/users');
+var validemail = require('../lib/validemail');
 var newName;
 
 module.exports = function(app, passport) {
@@ -8,10 +9,8 @@ module.exports = function(app, passport) {
     res.json({'jwt': req.user.generateToken(app.get('jwtSecret'))});
   });
 
-  app.post('/api/users', function(req, res) {
-
-
-    User.findOne({'email': req.body.email}, function(err, user) {
+  app.post('/api/users', validemail, function(req, res) {
+    User.findOne({'basic.email': req.body.email}, function(err, user) {
       if (err) return res.status(500).send('server error');
       if (user) return res.status(500).send('cannot create that user');
 
