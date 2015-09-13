@@ -2,7 +2,8 @@
 require("./../../bower_components/angular/angular");
 require("./../../bower_components/angular-route/angular-route.js");
 require("./../../bower_components/angular-cookies/angular-cookies.js");
-require("./../../bower_components/angular-base64/angular-base64.js");
+require("./../../bower_components/angular-base64/angular-base64.js")
+require("./../../bower_components/angular-base64/angular-base64.min.js")
 
 var notesApp = angular.module('notesApp', ['ngRoute', 'ngCookies', 'base64']);
 
@@ -34,7 +35,11 @@ notesApp.config(['$routeProvider', function($routeProvider) {
   });
 }]);
 
+<<<<<<< HEAD
 },{"./../../bower_components/angular-base64/angular-base64.js":9,"./../../bower_components/angular-cookies/angular-cookies.js":10,"./../../bower_components/angular-route/angular-route.js":11,"./../../bower_components/angular/angular":12,"./controllers/notes_controller":2,"./directives/dummy_direc":4,"./directives/new_note_form_direc":5,"./services/resource_backend_service":6,"./services/user_stats":7,"./users/users":8}],2:[function(require,module,exports){
+=======
+},{"./../../bower_components/angular-base64/angular-base64.js":9,"./../../bower_components/angular-base64/angular-base64.min.js":10,"./../../bower_components/angular-cookies/angular-cookies.js":11,"./../../bower_components/angular-route/angular-route.js":12,"./../../bower_components/angular/angular":13,"./controllers/notes_controller":2,"./directives/dummy_direc":4,"./directives/new_note_form_direc":5,"./services/resource_backend_service":6,"./services/user_stats":7,"./users/users":8}],2:[function(require,module,exports){
+>>>>>>> fe6ff8b9be8b89e40329d14899ba7b5b6196cbe9
 'use strict';
 
 module.exports = function(app) {
@@ -90,10 +95,15 @@ module.exports = function(app) {
 module.exports = function(app) {
   app.controller('UsersCtrl', ['status', '$scope', '$base64', '$cookies', function(status, $scope, $base64, $cookies){
 
+<<<<<<< HEAD
 
     $scope.userName = $cookies.name;
 
 
+=======
+    $scope.userName = $cookies.name;
+
+>>>>>>> fe6ff8b9be8b89e40329d14899ba7b5b6196cbe9
     $scope.signOut = function() {
         status.signOut();
       };
@@ -238,6 +248,15 @@ module.exports = function(app) {
         document.location.reload(true);
       },
 
+<<<<<<< HEAD
+=======
+      //reruns : function() {
+        //var clz = document.getelementbyid("sign");
+       // clz.class.show();
+       // document.location.reload(true);
+      //},
+
+>>>>>>> fe6ff8b9be8b89e40329d14899ba7b5b6196cbe9
       signIn : function(email, password) {
         $http.defaults.headers.common.Authorization = 'Basic ' + $base64.encode(email + ':' + password);
         return $http({
@@ -446,6 +465,8 @@ module.exports = function(app) {
 })();
 
 },{}],10:[function(require,module,exports){
+!function(){"use strict";angular.module("base64",[]).constant("$base64",function(){function a(a,b){var c=f.indexOf(a.charAt(b));if(-1==c)throw"Cannot decode base64";return c}function b(b){b=""+b;var c,d,f,g=b.length;if(0==g)return b;if(0!=g%4)throw"Cannot decode base64";c=0,b.charAt(g-1)==e&&(c=1,b.charAt(g-2)==e&&(c=2),g-=4);var h=[];for(d=0;g>d;d+=4)f=a(b,d)<<18|a(b,d+1)<<12|a(b,d+2)<<6|a(b,d+3),h.push(String.fromCharCode(f>>16,255&f>>8,255&f));switch(c){case 1:f=a(b,d)<<18|a(b,d+1)<<12|a(b,d+2)<<6,h.push(String.fromCharCode(f>>16,255&f>>8));break;case 2:f=a(b,d)<<18|a(b,d+1)<<12,h.push(String.fromCharCode(f>>16))}return h.join("")}function c(a,b){var c=a.charCodeAt(b);if(c>255)throw"INVALID_CHARACTER_ERR: DOM Exception 5";return c}function d(a){if(1!=arguments.length)throw"SyntaxError: Not enough arguments";var b,d,g=[];a=""+a;var h=a.length-a.length%3;if(0==a.length)return a;for(b=0;h>b;b+=3)d=c(a,b)<<16|c(a,b+1)<<8|c(a,b+2),g.push(f.charAt(d>>18)),g.push(f.charAt(63&d>>12)),g.push(f.charAt(63&d>>6)),g.push(f.charAt(63&d));switch(a.length-h){case 1:d=c(a,b)<<16,g.push(f.charAt(d>>18)+f.charAt(63&d>>12)+e+e);break;case 2:d=c(a,b)<<16|c(a,b+1)<<8,g.push(f.charAt(d>>18)+f.charAt(63&d>>12)+f.charAt(63&d>>6)+e)}return g.join("")}var e="=",f="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";return{encode:d,decode:b}}())}();
+},{}],11:[function(require,module,exports){
 /**
  * @license AngularJS v1.3.17
  * (c) 2010-2014 Google, Inc. http://angularjs.org
@@ -654,7 +675,7 @@ angular.module('ngCookies', ['ng']).
 
 })(window, window.angular);
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 /**
  * @license AngularJS v1.3.17
  * (c) 2010-2014 Google, Inc. http://angularjs.org
@@ -1646,7 +1667,7 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 
 })(window, window.angular);
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 /**
  * @license AngularJS v1.3.17
  * (c) 2010-2014 Google, Inc. http://angularjs.org

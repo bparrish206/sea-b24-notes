@@ -3,10 +3,15 @@
 module.exports = function(app) {
   app.controller('UsersCtrl', ['status', '$scope', '$base64', '$cookies', function(status, $scope, $base64, $cookies){
 
+<<<<<<< HEAD
 
     $scope.userName = $cookies.name;
 
 
+=======
+    $scope.userName = $cookies.name;
+
+>>>>>>> fe6ff8b9be8b89e40329d14899ba7b5b6196cbe9
     $scope.signOut = function() {
         status.signOut();
       };
