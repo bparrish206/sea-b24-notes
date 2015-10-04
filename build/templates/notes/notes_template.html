@@ -1,11 +1,15 @@
 <div data-ng-controller="UsersCtrl">
-<h1>Brent's Blogs</h1>
+  <h1>Brent's Blogs</h1>
 <button data-ng-click="signOut()" id="signOut">Sign out </button>
 </div>
+
 <div data-ng-controller="notesCtrl" data-ng-init="index()">
+<section>
   <div data-new-note-direc save="saveNewNote(resource)" fieldname="'noteBody'" resourcename="Note"></div>
-  <div data-ng-repeat="note in notes |orderBy:['-month', 'date', '-time']">
+  <article>
+  <div data-ng-repeat="note in notes |orderBy:['-month', '-date', '-time']">
     <div data-ng-hide="note.editing">
+
     <div id="noteBox">
     <div id="buttonBox" data-ng-show="note.name == newName">
       <button id="edit" data-ng-click="note.editing = true">Edit</button>
@@ -15,6 +19,7 @@
       <p id="date">{{note.month}}/{{note.date}} {{note.time}} - {{note.name}}</p>
     </div>
     </div>
+    </article>
     <div data-ng-show="note.editing">
     <div id="editBox">
     <label>Edit Post</label> </br>
@@ -25,4 +30,5 @@
     </div>
   </div>
 </div>
+</section>
 

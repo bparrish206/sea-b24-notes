@@ -4,6 +4,18 @@ body {
   font: 16px/26px Helvetica, Helvetica Neue, Arial;
 }
 
+section {
+  background: #ccc;
+  border: 1px solid #EEE;
+  margin: 2% -1%;
+}
+
+article {
+    background: white;
+    margin: 1% 15%;
+    padding-top: 1%;
+}
+
 h1, h2 {
 color: #555753;
 text-align: center;
@@ -45,12 +57,12 @@ text-align: center;
 }
 
 #noteBox {
-  background:#0074D9;
-  border: solid 2px #ccc;
-  border-radius: 1%;
-  margin: 1% 25%;
-  padding-top: 12px;
-  padding-left: 15px;
+  background: #0074D9;
+    border: solid 1.5px #333;
+    border-radius: 1%;
+    margin: 2% 15%;
+    padding-top: 12px;
+    padding-left: 15px;
 }
 
 #noteBox > p:nth-child(2) {
