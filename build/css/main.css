@@ -6,17 +6,18 @@ body {
 
 section {
   background: #ccc;
-  border: 1px solid #EEE;
   margin: 2% -1%;
+  padding-bottom: 5%;
 }
 
 article {
     background: white;
-    margin: 1% 15%;
+    margin: 0% 15%;
     padding-top: 1%;
+    padding-bottom: 3%;
 }
 
-h1, h2 {
+h1, h2, footer p {
 color: #555753;
 text-align: center;
 }
@@ -54,13 +55,20 @@ button {
 
 #newNote {
 text-align: center;
+border: 1px solid #333;
+background: #666;
+margin-top: 2%;
+}
+
+#newNote label {
+  color: white;
 }
 
 #noteBox {
-  background: #0074D9;
+  background: #9CBCFF;
     border: solid 1.5px #333;
     border-radius: 1%;
-    margin: 2% 15%;
+    margin: 1% 15%;
     padding-top: 12px;
     padding-left: 15px;
 }
@@ -76,7 +84,7 @@ margin-right: 0.25%;
 
 #delete {
   float: right;
-  margin-right: -6px;
+  margin-right: 6px;
 }
 
 #date {
@@ -87,12 +95,12 @@ margin-right: 0.25%;
 }
 
 #editBox {
-  margin: 0% 20%;
-  border: solid 2px #ccc;
-  border-radius: 2em;
-  background: #FFDC00;
-  padding: 20px;
-  padding-right: 0;
+    margin: 0% 16%;
+    border: solid 2px #ccc;
+    border-radius: 1em;
+    background: #FFFF66;
+    padding: 20px;
+    padding-right: 0;
 }
 
 #editBox input {
@@ -105,13 +113,17 @@ margin-right: 0.25%;
 }
 
 #save {
-  margin-left: 25px;
+  margin-left: -2px;
 }
 
 #cancel {
-  margin-left: -13px;
+  margin-left: -1px;
 }
 
 #signOut {
   margin: 0% 0% 0 91%;
+}
+
+input.ng-pristine.ng-untouched.ng-valid {
+  width: 37%;
 }
